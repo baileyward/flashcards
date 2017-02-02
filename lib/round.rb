@@ -1,10 +1,14 @@
 require './lib/guess'
 require './lib/cards'
 require './lib/deck'
+require './lib/messages'
 
 
 class Round
-  attr_reader :deck, :guesses, :current_card, :number_correct
+
+  include Messages
+
+  attr_reader :deck, :guesses, :current_card, :number_correct, :total_cards
 
   def initialize(deck)
     @deck = deck
@@ -12,6 +16,7 @@ class Round
     @current_card = nil
     @number_correct = 0
     @count = 1
+    @total_cards = deck.count
   end
 
   def record_guess(response, current_card)
@@ -25,7 +30,7 @@ class Round
   end
 
   def percent_correct
-    (@number_correct.to_f / @guesses.count) * 100
+    (@number_correct.to_f / @guesses.@count) * 100
   end
 
   def draw
@@ -33,26 +38,26 @@ class Round
   end
 
   def start
-    total_cards = deck.count
+    #total_cards = deck.count
 
-    puts "Welcome! You're playing with #{total_cards} cards."
-    puts "-------------------------------------------------"
+    welcome
 
-    until deck.count == 0
-      puts "This is card number #{@count} out of #{total_cards}."
+    until deck.@count == 0
+      #puts "This is card number #{@count} out of #{total_cards}."
+      card_count
 
       @count += 1
       draw
+      questions
 
-      puts "Question: #{@current_card.question}"
+      #card_count
       answer = gets.chomp
 
       guess = self.record_guess(answer, @current_card)
       puts guess.feedback
     end
 
-    puts "****** Game over! ******"
-    puts "You had #{@number_correct} correct guesses out of #{@guesses.count} for a score of #{self.percent_correct}%."
+  goodbye
   end
 
 end

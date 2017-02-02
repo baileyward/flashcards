@@ -18,26 +18,3 @@ attr_reader :response, :card
     end
   end
 end
-
-
-# Dog 
-# -> fetch
-# -> bark
-# -> howl
-#
-# Cat
-# -> scratch
-# -> meow
-#
-# ----------
-# String <- built in method
-# -> class
-# -> capitalize
-# -> length
-#
-# Guess
-# -> correct? checks if correct
-# -> feedback
-#
-# "Juneau" (String)
-# "Juneau"

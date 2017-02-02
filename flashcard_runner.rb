@@ -1,4 +1,4 @@
-#require_relative "guess"
+require "./lib/guess"
 require "./lib/cards"
 require "./lib/deck"
 require "./lib/round"
